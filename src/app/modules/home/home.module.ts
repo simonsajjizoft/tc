@@ -18,9 +18,6 @@ const routes: Routes = [
   {
     path: 'content', component: ContentAreaComponent,
   },
-  
-
-  { path: '**', redirectTo: '', pathMatch: 'full' }
 ]
 
 @NgModule({

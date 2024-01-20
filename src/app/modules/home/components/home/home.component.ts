@@ -9,6 +9,8 @@ import { RadioComponent } from 'src/app/components/radio/radio.component';
 import { DateComponent } from 'src/app/components/date/date.component';
 import { PhoneComponent } from 'src/app/components/phone/phone.component';
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { MatDrawerMode } from '@angular/material/sidenav';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -108,6 +110,10 @@ export class HomeComponent implements OnInit {
       "row": 1,
     }
   ];
+  assigneeDropdown;
+  events: string[] = [];
+  opened: boolean = true;
+  mode = new FormControl('side' as MatDrawerMode);
 
 
   constructor() { }

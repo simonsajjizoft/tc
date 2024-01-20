@@ -34,7 +34,7 @@ import { PlatformModule } from '@angular/cdk/platform';
 import { PortalModule } from '@angular/cdk/portal';
 import { MatIconModule } from '@angular/material/icon';
 
-
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
     declarations: [
@@ -78,7 +78,8 @@ import { MatIconModule } from '@angular/material/icon';
         OverlayModule,
         PlatformModule,
         PortalModule,
-        MatIconModule
+        MatIconModule,
+        MatSidenavModule
         
         
     ],
@@ -115,7 +116,8 @@ import { MatIconModule } from '@angular/material/icon';
         ObserversModule,
         OverlayModule,
         PlatformModule,
-        PortalModule
+        PortalModule,
+        MatSidenavModule
     ]
 })
 export class SharedModule { }

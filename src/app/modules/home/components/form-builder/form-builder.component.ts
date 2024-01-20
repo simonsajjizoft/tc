@@ -7,7 +7,7 @@ import {
   moveItemInArray,
   DragDropModule,
 } from '@angular/cdk/drag-drop';
-import { Component, VERSION ,OnInit} from '@angular/core';
+import { Component, VERSION ,OnInit, ViewChild, ElementRef} from '@angular/core';
 import { randomInt } from 'crypto';
 
 type IMenu = {
@@ -35,13 +35,14 @@ export class FormBuilderComponent implements OnInit {
   menu: Array<IMenu> = [
     // { title: 'Label', price: 12, id: 5 ,img:"assets/icons/label.png",type:'label',label:"Question"},
     { title: 'Text', price: 12, id: 1 ,img:"assets/icons/text.png", type: "textbox",placeholder: "Please Enter Placeholder",label:"Question",selected:false,checked:false},
-    { title: 'DropDown', price: 12, id: 3 ,img:"assets/icons/dropdown.png",type: "dropdown",label:"Question",selected:false,checked:false},
+    { title: 'Dropdown', price: 12, id: 3 ,img:"assets/icons/dropdown.png",type: "dropdown",label:"Question",selected:false,checked:false},
     { title: 'Multiple Choice', price: 12, id: 4 ,img:"assets/icons/radio.png",type: "radio",values: ["Option"],label:"Question",selected:false,checked:false},
-    { title: 'Text Area', price: 12, id: 5 ,img:"assets/icons/textarea.png",type:'textarea',label:"Question",selected:false,checked:false},
-    { title: 'Check box', price: 12, id: 5 ,img:"assets/icons/check.png",type:'checkbox',label:"Question",selected:false,checked:false},
+    { title: 'Textarea', price: 12, id: 5 ,img:"assets/icons/textarea.png",type:'textarea',label:"Question",selected:false,checked:false},
+    { title: 'Checkbox', price: 12, id: 5 ,img:"assets/icons/check.png",type:'checkbox',label:"Question",selected:false,checked:false},
   ];
   table: Array<IMenu> = [];
   selectedField;
+  @ViewChild('tableList') tableList: ElementRef;
 
   constructor(private dialog: MatDialog) { }
 
@@ -61,6 +62,7 @@ export class FormBuilderComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+    this.sortItemsbasedIndex()
     }
     if (event.previousContainer.data) {
       this.menu = this.menu.filter((f) => !f.temp);
@@ -85,27 +87,27 @@ export class FormBuilderComponent implements OnInit {
     let tempArray = JSON.parse(JSON.stringify(item));
     tempArray.id = this.table.length;
     this.table.push(tempArray);
-    console.log(this.table)
   }
 
   checkField(obj){
     this.table.map((item,idx)=>{
-      if(obj?.id===idx) item.checked = !item?.checked;
+      if(obj?.id===item?.id) item.checked = !item?.checked;
     })
   }
 
   selectField(obj){
     this.table.map((item,idx)=>{
-      if(obj?.id===idx) item.selected = true;
+      if(obj?.id===item?.id){
+        item.selected = obj.selected;
+        this.selectedField = obj?.item;
+      }
       else item.selected = false
     })
-    console.log(this.table)
   }
 
   fieldChange(field){
-    console.log(field)
     this.table.map((item,idx)=>{
-      if(field?.id===idx){
+      if(field?.id===item?.id){
         item =  field;
       }
     })
@@ -119,6 +121,33 @@ export class FormBuilderComponent implements OnInit {
     return cnt | 0;
   }
 
+  swap(element){
+    console.log(this.selectedField);
+    console.log(element)
+    this.table.map((item,idx)=>{
+      if(element?.id===item?.id){
+        this.swapElements(this.table,this.selectedField?.id,element?.id)
+      } 
+    
+    })
+
+  }
+
+  swapElements(array, index1, index2){
+    let temp = array[index1]
+    array[index1] = array[index2]
+    array[index2] = temp;  
+    this.sortItemsbasedIndex()  
+  };
+
+
+  sortItemsbasedIndex(){
+    this.table.map((item,idx)=>{
+      item.id = idx;
+
+    })
+    console.log(this.table)
+  }
 
 
 }

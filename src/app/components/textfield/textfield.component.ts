@@ -13,6 +13,7 @@ export class TextfieldComponent implements OnInit {
   @Output() selectFieldEvent = new EventEmitter();
   @Output() checkItemEvent = new EventEmitter();
   @Output() fieldValueChange = new EventEmitter();
+  @Output() swapElement = new EventEmitter();
   showProperties;
   @HostBinding('style.width') public width: string ;
   constructor(private changeDetectorRef: ChangeDetectorRef,
@@ -20,6 +21,7 @@ export class TextfieldComponent implements OnInit {
       this.renderer.listen('window', 'click',(e:Event)=>{
         if(e.target != this.field.nativeElement && !this.field.nativeElement.contains(e.target)){
           this.showProperties = false;
+          this.selectFieldEvent.emit({item :this.config,id: this.idx,selected:false});
           this.changeDetectorRef.detectChanges();
         }
     
@@ -34,9 +36,15 @@ export class TextfieldComponent implements OnInit {
   }
 
   displayOptions(focus){
-     this.showProperties = focus;
-     if(focus){
-      this.selectFieldEvent.emit({item :this.config,id: this.idx,selected:this.config?.selected});
+     if(this.config?.selected != focus){
+      if(focus){
+        this.showProperties = focus;
+        this.selectFieldEvent.emit({item :this.config,id: this.config?.id,selected:true});
+       }
+      //  else{
+      //   this.showProperties = focus;
+      //   this.selectFieldEvent.emit({item :this.config,id: this.config?.id,selected:false});
+      //  } 
      }
    }
 
@@ -48,7 +56,11 @@ export class TextfieldComponent implements OnInit {
    labelChange(label){
     console.log(label)
     this.config.label = label;
-    this.fieldValueChange.emit({item :this.config,id: this.idx});
+    this.fieldValueChange.emit({item :this.config,id: this.config?.id});
+   }
+
+   swap(){
+    this.swapElement.emit({item :this.config,id: this.config?.id});
    }
 
 
