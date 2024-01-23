@@ -18,6 +18,14 @@
 
 }
 
+:root{
+    --primary-color:#d9045b
+}
+
+.d-color{
+    color:#d9045b!important;
+}
+
 .mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: 0.3675em 0;
 }
@@ -35,7 +43,7 @@
 }
 
 .mat-tab-header {
-    border-bottom: 1px solid #639ab5;
+    border-bottom: 2px solid rgb(231, 231, 231);
     padding-bottom: 0px !important;
     margin-bottom: 0px !important;
 }
@@ -43,19 +51,20 @@
 .mat-tab-label {
     opacity: unset !important;
     padding: 10px !important;
-    padding-left: 0px !important;
+    padding-left: 10px !important;
     margin-right: 20px !important;
     min-width: 0px !important;
-    padding-right: 0px !important;
-    color: #24495b !important;
-    height: 45px !important;
+    padding-right: 10px !important;
+    color: rgb(52, 45, 71)!important;
+    height: 32px !important;
 }
 
 .mat-tab-label-active {
     position: relative;
     z-index: 5;
     top: 1px;
-    border-bottom: 3px solid #24495b;
+    font-weight: bold!important;
+    border-bottom: 3px solid var(--primary-color);
 }
 
 .mat-input-element {
@@ -63,19 +72,11 @@
 }
 
 .mat-tab-label-active .mat-tab-label-content {
-    font-weight: 500 !important;
-    color: #24495b !important;
+    font-weight: bold !important;
+    color: #121212 !important;
 }
 
-.mat-tab-label-active .tab-name {
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    color: #24495b !important;
-}
 
-.mat-tab-label .tab-name:hover {
-    color: #24495b !important;
-}
 
 ::-webkit-scrollbar {
     width: 14px!important;

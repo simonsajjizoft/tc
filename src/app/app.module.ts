@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { AdhostDirective } from './adhost.directive';
+import { MAT_TABS_CONFIG } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,10 @@ import { AdhostDirective } from './adhost.directive';
       preventDuplicates: true
     })
   ],
-  providers: [   ],
+  providers: [  
+      { provide: MAT_TABS_CONFIG, useValue: { animationDuration: '0ms' } }
+    
+   ],
   bootstrap: [AppComponent],
   exports: [BrowserModule]
 })

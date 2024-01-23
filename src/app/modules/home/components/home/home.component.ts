@@ -11,6 +11,7 @@ import { PhoneComponent } from 'src/app/components/phone/phone.component';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { MatDrawerMode } from '@angular/material/sidenav';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -116,15 +117,17 @@ export class HomeComponent implements OnInit {
   mode = new FormControl('side' as MatDrawerMode);
 
 
-  constructor() { }
+  constructor(public router:Router,public activatedRoute:ActivatedRoute) { 
+    
+  }
 
   ngOnInit() {
-    // this.adHost?.viewContainerRef.clear();
-    // this.pageConfig.map((item) => {
-    //   let comp = this.elements[item?.type];
-    //   const component = this.adHost?.createMyComponent(comp);
-    //   component.instance['config'] = item;
-    // })
+   this.router.navigate(['/packages']);
+   console.log(this.router)
+  }
+
+  navigate(route){
+    this.router.navigate([route])
   }
 
 }

@@ -11,10 +11,14 @@ import { ContentAreaComponent } from './components/content-area/content-area.com
 import { NgComponentOutlet } from '@angular/common';
 import { FormBuilderComponent } from './components/form-builder/form-builder.component';
 import { EditDialogComponent } from './components/form-builder/edit-dialog/edit-dialog.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PackagesComponent } from './components/packages/packages.component';
 const routes: Routes = [
-  {
-    path: '', component: HomeComponent,
-  },
+  { path: '', component: HomeComponent,
+  children: [
+    { path: 'dashboard', component: DashboardComponent, },
+    { path: 'packages', component: PackagesComponent },
+  ]},
   {
     path: 'content', component: ContentAreaComponent,
   },
@@ -26,6 +30,8 @@ const routes: Routes = [
     ContentAreaComponent,
     FormBuilderComponent,
     EditDialogComponent,
+    DashboardComponent,
+    PackagesComponent,
     
   ],
   imports: [
