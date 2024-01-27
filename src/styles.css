@@ -26,6 +26,10 @@
     color:#d9045b!important;
 }
 
+.bg-prim{
+    background-color: #ec277e!important;
+}
+
 .mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: 0.3675em 0;
 }

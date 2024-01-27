@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatDrawerMode } from '@angular/material/sidenav';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = "TC Portal | SchoolWizard"
-  constructor() {
+  assigneeDropdown;
+  events: string[] = [];
+  opened: boolean = true;
+  mode = new FormControl('side' as MatDrawerMode);
 
+
+  constructor(public router:Router,public activatedRoute:ActivatedRoute) { 
+    
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+   this.router.navigate(['/packages']);
+   console.log(this.router)
+  }
+
+  navigate(route){
+    this.router.navigate([route])
+  }
+
 
 }

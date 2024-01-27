@@ -7,6 +7,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { ToastrModule } from 'ngx-toastr';
 import { AdhostDirective } from './adhost.directive';
 import { MAT_TABS_CONFIG } from '@angular/material/tabs';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MAT_TABS_CONFIG } from '@angular/material/tabs';
   imports: [
     BrowserModule,
     BrowserModule,
+    SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

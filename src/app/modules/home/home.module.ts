@@ -14,11 +14,12 @@ import { EditDialogComponent } from './components/form-builder/edit-dialog/edit-
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PackagesComponent } from './components/packages/packages.component';
 const routes: Routes = [
-  { path: '', component: HomeComponent,
-  children: [
-    { path: 'dashboard', component: DashboardComponent, },
-    { path: 'packages', component: PackagesComponent },
-  ]},
+  // { path: '', component: HomeComponent,
+  // children: [
+  //   { path: 'dashboard', component: DashboardComponent, },
+  //   { path: 'packages', component: PackagesComponent },
+  // ]},
+  { path: 'dashboard', component: DashboardComponent, },
   {
     path: 'content', component: ContentAreaComponent,
   },
