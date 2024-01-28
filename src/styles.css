@@ -262,3 +262,10 @@ a:hover {
   .mat-form-field-appearance-fill .mat-form-field-flex {
     background-color: rgb(248, 247, 251)
 }
+
+
+.custom-modalbox mat-dialog-container {
+    box-shadow: none!important;
+    border-radius: 2px!important;
+    padding: 0!important;
+}

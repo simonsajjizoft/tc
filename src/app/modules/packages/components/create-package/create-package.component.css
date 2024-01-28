@@ -1,15 +1,16 @@
 .min-h-scr-half{
-    min-height: calc(100vh - 100px);
+    height: calc(100vh - 100px);
+    position: relative;
 }
 
 .main-content{
-    height: 90vh!important;
+    height: calc(90% - 10px)!important;
 }
 
 .p-sticky {
     position: -webkit-sticky;
     position: sticky;
-    bottom: 0;
+    bottom: 2px;
     background-color: white!important;
     width: 100%;
   }

@@ -35,6 +35,8 @@ import { PortalModule } from '@angular/cdk/portal';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatStepperModule} from '@angular/material/stepper';
+import { ConfirmBoxComponent } from 'src/app/components/confirm-box/confirm-box.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
     declarations: [
@@ -48,6 +50,7 @@ import {MatStepperModule} from '@angular/material/stepper';
         ButtonComponent,
         PhoneComponent,
         AdhostDirective,
+        ConfirmBoxComponent
    
     
      
@@ -80,7 +83,8 @@ import {MatStepperModule} from '@angular/material/stepper';
         PortalModule,
         MatIconModule,
         MatSidenavModule,
-        MatStepperModule
+        MatStepperModule,
+        MatDialogModule
         
         
     ],
@@ -119,7 +123,9 @@ import {MatStepperModule} from '@angular/material/stepper';
         PlatformModule,
         PortalModule,
         MatSidenavModule,
-        MatStepperModule
+        MatStepperModule,
+        ConfirmBoxComponent,
+        MatDialogModule
     ]
 })
 export class SharedModule { }

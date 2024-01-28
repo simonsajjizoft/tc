@@ -2,7 +2,9 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { ConfirmBoxComponent } from 'src/app/components/confirm-box/confirm-box.component';
 
 
 @Component({
@@ -23,8 +25,11 @@ export class CreatePackageComponent implements OnInit {
   });
   stepperOrientation: Observable<StepperOrientation>;
   statusDropdown;
-  constructor( private _formBuilder: FormBuilder, 
-    breakpointObserver: BreakpointObserver,) { }
+  constructor( 
+    private _formBuilder: FormBuilder, 
+    breakpointObserver: BreakpointObserver,
+    private dialog:MatDialog
+    ) { }
 
   ngOnInit(): void {
   }
@@ -46,6 +51,13 @@ export class CreatePackageComponent implements OnInit {
   checkPrevStepActive(stepper){
     if(stepper?.selectedIndex == 1 ) return true;
     else if(stepper?.selectedIndex == 0 ) return false;
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(ConfirmBoxComponent, {
+      panelClass: 'custom-modalbox',
+      data: { data:'data' }
+    });
   }
 
 }

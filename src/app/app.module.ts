@@ -8,10 +8,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { AdhostDirective } from './adhost.directive';
 import { MAT_TABS_CONFIG } from '@angular/material/tabs';
 import { SharedModule } from './modules/shared/shared.module';
+import { ConfirmBoxComponent } from './components/confirm-box/confirm-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+ 
 
   ],
   imports: [
